@@ -1,0 +1,41 @@
+<?php
+$pdfinvoice = $block->getAllpdfinvoice();
+//var_dump($pdfinvoice);
+if (!empty($pdfinvoice)):
+?>
+    <table border="1">
+        <tr>
+            <th><?= __("ID") ?></th>
+            <th><?= __("First Name") ?></th>
+            <th><?= __("Last Name") ?></th>
+            <th><?= __("Email") ?></th>
+            <th><?= __("Phone Number") ?></th>
+            <th><?= __("Action") ?></th>
+        </tr>
+
+        <?php foreach ($pdfinvoice as $pdf): ?>
+            <tr>
+                <td><?= $pdf->getid() ?></td>
+                <td><?= $pdf->getfirst_name() ?></td>
+                <td><?= $pdf->getlast_name() ?></td>
+                <td><?= $pdf->getemail_id() ?></td>
+                <td><?= $pdf->getphone_number() ?></td>
+                <td>
+                    <a style="color: red;" href="<?= $block->getDeleteAction() . 'id/' . $pdf->getId() ?>">
+                        <?= __('Delete') ?>
+                    </a>
+                    
+                    <a style="margin-left: 9px"
+                           href="<?= $block->getEditAction() . 'id/' . $pdf->getId(); ?>"><?php echo __('Edit') ?></a>
+
+                </td>
+            </tr>
+        <?php endforeach; ?>	
+    </table>
+<?php else: ?>
+    <h1><?= __("No data is found") ?></h1>
+<?php endif; ?>
+
+<a style="margin-top: 40px" href="<?= $this->geturl('pdfinvoice') ?>">
+    <?= __('Create') ?>
+</a>
