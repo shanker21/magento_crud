@@ -1,0 +1,57 @@
+<div class="login">
+    <div class="login-form"> 
+        <form 
+            id="login-form"
+            name="login"
+            action="<?= $block->getFormAction(); ?>" 
+            method="POST" 
+            enctype="multipart/form-data" 
+            autocomplete="on" 
+            data-mage-init='{"validation": {}}'
+        >
+        <fieldset class="fieldset">
+            <div class="field required">
+                <label for="email_id" id="email_id" class="label"><?= __('Email address') ?></label>
+                <div class="control">
+                    <input type="email" name="email_id" class="required-entry" id="email_id">
+                        <span id="email_id_error" class="error-message"></span>
+                </div>
+            </div>
+            <div class="field required">
+                <label for="password" id="password" class="label"> <?= __('Password') ?></label>                                
+                <div class="control">
+                    <input type="password" name="password" class="control required-entry" id="password">
+                        <span id="password_error" class="error-message"></span>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" id="signButton" class="action submit primary" title="<?= __('Sign') ?>"><span><?= __('Sign') ?></span></button>
+                </div>
+            </div>
+            <br>
+            <div class="secondary">
+                Don't have an account? 
+                <a href="<?php echo $this->getUrl('pdfinvoice'); ?>" class="login-fpwd">Register now</a>
+            </div>
+        </fieldset>
+                    
+        </form>  
+    </div>  
+</div>
+
+<style>
+    .error {
+        color: red;
+    }
+    .input[name="email_id"] {
+        width: auto;
+    }
+    .login-fpwd {
+        color: #173F35;
+    }
+    .login-fpwd:hover {
+        text-decoration: underline;
+        
+    }
+</style>

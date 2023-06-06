@@ -1,0 +1,43 @@
+<?php
+$firstName = $block->getFirstName();
+$lastName = $block->getLastName();
+?>
+<div class="logout-link">
+    <form action="<?php echo $block->getUrl('pdfinvoice/index/login'); ?>" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+</div>
+
+<div class="welcome-message">
+    <h1>Welcome, <?php echo $this->escapeHtml($firstName) . ' ' . $this->escapeHtml($lastName); ?></h1>
+</div>
+
+<style>
+    .welcome-message {
+        text-align: center;
+        color: red;
+        padding: 20px;
+    }
+    
+    .logout-link {
+        text-align: right;
+        padding: 20px;
+    }
+</style>
+
+
+
+
+
+<style>
+    .welcome-message {
+        text-align: center;
+        color: red;
+        padding: 20px;
+    }
+    
+    .logout-link {
+        text-align: right;
+        padding: 20px;
+    }
+</style>
