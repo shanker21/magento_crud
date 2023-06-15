@@ -1,0 +1,101 @@
+<?php
+$data = $block->getAllData();
+// print_r ($data);
+$first_name = '';
+$last_name = '';
+$email_id = '';
+$phone_number = '';
+$message = '';
+$password = '';
+$confirm_password = '';
+
+if ($data->getid()) {
+	// echo $data->getid();
+    $first_name = $data->getfirst_name();
+	// echo  $first_name;
+    $last_name = $data->getlast_name();
+    $email_id = $data->getemail_id();
+    $phone_number = $data->getphone_number();
+    $message = $data->getmessage();
+	$password = $data->getpassword();
+	$confirm_password = $data->getconfirm_password();
+}
+?> 
+<div class="catalog">	
+				<div class="catalog-form">
+					<form 
+                        id="catalog-form" 
+                        name="catalog" 
+                        action="<?= $this->getUrl("form/index/save"); ?>" 
+                        method="POST" 
+                        enctype="multipart/form-data" 
+                        autocomplete="on" 
+                        data-mage-init='{"validation": {}}'
+                        >
+                        <?php if ($data->getid()): ?>
+                <input type="hidden" name="id" value="<?= $data->getid() ?>">
+            <?php endif; ?>
+						<fieldset class="fieldset">
+							<div class="field required">
+							<label for="first_name" id="first_name" class="label"> <?= __('First Name:') ?></label>								
+                            <div class="control">
+									<input type="text" name="first_name"   class="control required-entry" width ="5px" id="first_name" value="<?= $first_name ?>">
+									<span  id="first_name_error" class="error-message"></span>
+								</div>
+							</div>
+                            <div class="field required">
+							<label for="last_name" id="last_name" class="label"> <?= __('Last Name:') ?></label>								
+                            <div class="control">
+									<input value="<?= $last_name ?>" type="text" maxlength="50"  name="last_name" class="control required-entry" id="last_name">
+									<span  id="last_name_error" class="error-message"></span>
+								</div>
+							</div>
+							<div class="field required">
+							<label for="email_id" id="email_id" class="label"><?= __('Email address:') ?></label>
+								<div class="control">
+									<input value="<?= $email_id ?>" type="email" maxlength="50"  name="email_id" class="required-entry" id="email_id">
+									<span  id="email_id_error" class="error-message"></span>
+								</div>
+							</div>
+							<div class="field required">
+								<label for="phone_number" id="phone_number" class="label"> <?= __('phone Number:') ?></label>								
+								<div class="control">
+									<input type="text" value="<?= $phone_number ?>" maxlength="10"  name="phone_number" class="control required-entry" id="phone_number">
+									<span  id="phone_number_error" class="error-message"></span>
+								</div>
+							</div>
+							<div class="field required">
+								<label for="password" id="password" class="label"> <?= __('password:') ?></label>								
+								<div class="control">
+									<input type="password" value="<?= $password ?>"  name="password" class="control required-entry" id="password">
+									<span  id="password_error" class="error-message"></span>
+								</div>
+							</div>
+							<div class="field required">
+								<label for="confirm_password" id="confirm_password" class="label"> <?= __('Re-enter Password:') ?></label>								
+								<div class="control">
+									<input type="password" value="<?= $confirm_password ?>"  name="confirm_password" class="control required-entry" id="confirm_password">
+									<span  id="repassword_error" class="error-message"></span>
+								</div>
+							</div>
+							<div class="field">
+							<label for="message" id="message" class="label"> <?= __('Message:') ?></label>								
+                            <div class="control">
+									<textarea type="text" value="<?= $message ?>" name="message" class="control" id="message"></textarea>
+								</div>
+							</div>
+						</fieldset>
+						<div class="actions-toolbar">
+					        <div class="primary">
+					            <button type="submit" id="submit" class="action submit primary" title="<?php  echo __('Save') ?>"><span><?php echo __('Save') ?></span></button>
+					        </div>
+					    </div>
+					</form>		
+				</div>
+			</div>
+
+<style>
+	.error{
+		color:#CE615C;
+	}
+</style>

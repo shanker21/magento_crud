@@ -1,0 +1,31 @@
+<?php
+$firstName = $block->getFirstName();
+$lastName = $block->getLastName();
+$isUserLoggedIn = !empty($firstName) && !empty($lastName);
+?>
+
+<div class="login">
+    <?php if ($isUserLoggedIn): ?>
+        <form action="<?php echo $block->getUrl('form/index/logout'); ?>" method="post">
+            <button type="submit" class="logout">Logout</button>
+        </form>
+    <?php else: ?>
+        <form action="<?php echo $block->getUrl('form/index/login'); ?>" method="post">
+            <button type="submit" class="logout">Login</button>
+        </form>
+    <?php endif; ?>
+</div>
+
+<hr>
+<h1>Welcome</h1>
+<?php if ($isUserLoggedIn): ?>
+    <h1><?php echo $firstName . ' ' . $lastName ?></h1>
+<?php endif; ?>
+<style>
+    .login {
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+</style>

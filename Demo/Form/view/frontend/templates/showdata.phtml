@@ -1,0 +1,56 @@
+
+<?php
+$details = $block->getAlldetails();
+if (!empty($details)) {
+?>
+<div class="table-wrapper orders-history">
+    <table class="data table table-order-items history" id="my-orders-table">
+        <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?php echo __('ID') ?></th>
+            <th scope="col" class="col fname"><?php echo __('First Name') ?></th>
+            <th scope="col" class="col lname"><?php echo __('Last Name') ?></th>
+            <th scope="col" class="col email"><?php echo __('Email ID') ?></th>
+            <th scope="col" class="col phonenumber"><?php echo __('phone Number') ?></th>
+            <th scope="col" class="col action"><?php echo __('Password') ?></th>
+            <th scope="col" class="col status"><?php echo __('Status') ?></th>
+            <th scope="col" class="col password"><?php echo __('Action') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($details as $item): ?>
+        <tr>
+            <td data-th="<?= $block->escapeHtml(__('ID')) ?>" class="col id">
+                <?php echo $item->getid() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('First Name')) ?>" class="col fname">
+                <?php echo $item->getfirst_name() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Last Name')) ?>" class="col lname">
+                <?php echo $item->getlast_name() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Email ID')) ?>" class="col email">
+                <?php echo $item->getemail_id() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('phone Number')) ?>" class="col phonenumber">
+                <?php echo $item->getphone_number() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Password')) ?>" class="col password">
+                <?php echo $item->getpassword() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status">
+                <?php echo $item->getStatus() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Action')) ?>" class="col delete">
+                <a href="<?php echo $block->getDeleteAction() . 'id/' . $item->getId(); ?>"><?php echo __('Delete') ?></a>
+                <a style="margin-left: 9px" href="<?php echo $block->getEditAction() . 'id/' . $item->getId(); ?>"><?php echo __('Edit') ?></a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?php
+    }
+    ?>
